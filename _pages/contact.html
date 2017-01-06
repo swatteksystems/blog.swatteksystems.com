@@ -1,0 +1,24 @@
+---
+key: 3
+title: Contact
+permalink: /contact/
+options: nolanding
+excerpt: Get in touch
+background-image: caustic_light.jpg
+script-includes:
+  - /js/jquery.validate.min.js
+script: |
+  $("#sendemail").validate({
+    rules: {
+      country: {
+        required: true,
+        equalTo: "#type3"
+      }
+    },
+    messages: {
+      country: "Specify a three-letter lowercase name."
+    }
+  });
+---
+<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+<script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us14.list-manage.com","uuid":"ed03e000abbe37efad830d7d3","lid":"818b93c706"}) })</script>

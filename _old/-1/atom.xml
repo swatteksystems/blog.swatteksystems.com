@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet href="atom.css" type="text/css"?>
+
+<feed xmlns="https://www.w3.org/2005/Atom"
+      xmlns:atom="https://www.w3.org/2005/Atom"
+      xmlns:dc="https://purl.org/dc/elements/1.1/"
+      xml:base="https://blog.swatteksystems.com"
+      xml:lang="en">
+  <link rel="self"
+        href="https://blog.swatteksystems.com/-1/atom.xml" />
+  <div xmlns="https://www.w3.org/1999/xhtml">
+    <a href="https://www.atomenabled.org/feedvalidator/check.cgi?url=https://blog.swatteksystems.com/-1/atom.xml">
+      <img title="Validate my Atom feed" width="88"
+           height="31"
+           src="https://www.atomenabled.org/feedvalidator/images/valid-atom.png"
+           alt="[Valid Atom]" border="0px" />
+    </a>
+    <p>
+      <span>
+        This is an Atom formatted XML site feed. It is intended to be viewed in
+        a Newsreader or syndicated to another site. Please visit 
+      </span>
+      <a href="https://www.atomenabled.org/">Atom Enabled</a>
+      <span>
+        for more info.
+      </span>
+    </p>
+  </div>
+
+  <title type="html">#!</title>
+  <subtitle>UNIX &amp; Linux guides, howto and tips.</subtitle>
+
+  <updated>2008-12-17T11:42:13-05:00</updated>
+
+  <link href="https://blog.swatteksystems.com/-1"
+        rel="alternate" type="text/html" />
+
+  
+
+  <id>urn:syndication:3adc1a17f221cab3acd05c24aeeb08d7</id>
+
+  <generator uri="https://plone.org/products/fatsyndication/" version="0.1">fatsyndication</generator>
+
+  
+
+    <entry>
+
+      <title>Am I Your Sysadmin?</title>
+
+      <link rel="alternate" type="text/html"
+            href="https://blog.swatteksystems.com/-1/archive/2008/12/17/am-i-your-sysadmin" />
+
+      
+
+      <id>urn:syndication:bb88a2d5744cc5681c70ec7308aae470</id>
+      
+      
+      
+
+      
+      <content type="xhtml"
+               xml:base="https://blog.swatteksystems.com"
+               xml:lang="en-US" xml:space="preserve">
+        <div xmlns="https://www.w3.org/1999/xhtml">
+          
+<div id="content" class="inner">
+<div align="left">&nbsp;</div>
+<h2 align="left">Know your System Administrator</h2>
+<p>
+                                               (a field guide)</p>
+<p>
+
+There are four major species of Unix sysad:</p>
+<p>
+ 1.The <strong>TECHNICAL THUG</strong>. Usually a systems programmer who has been forced
+into system administration; writes scripts in a polyglot of the Bourne shell,
+sed, C, awk, perl, and APL.</p>
+<p>
+ 2.The <strong>ADMINISTRATIVE FASCIST</strong>. Usually a retentive drone (or rarely, a
+harridan ex-secretary) who has been forced into system administration.</p>
+<p>
+ 3.The <strong>MANIAC</strong>. Usually an aging cracker who discovered that neither the
+Mossad nor Cuba are willing to pay a living wage for computer 
+espionage. Fell into system administration; occasionally approaches 
+major competitors with indesp schemes.</p>
+<p>
+ 4.The <strong>IDIOT</strong>. Usually a cretin, morpohodite, or old COBOL programmer
+selected to be the system administrator by a committee of cretins, 
+morphodites, and old COBOL programmers.</p>
+<h3>HOW TO IDENTIFY YOUR SYSTEM ADMINISTRATOR:</h3>
+<h3>SITUATION:</h3>
+Low disk space.
+<h3>TECHNICAL THUG:</h3>
+Writes a suite of scripts to monitor disk usage,
+maintain a database of historic disk usage, predict future disk 
+usage via least squares regression analysis, identify users
+who are more than a standard deviation over the mean, and send mail to
+the offending parties.  Places script in cron. Disk usage does not 
+change, since disk-hogs, by nature, either ignore
+script-generated mail, or file it away in triplicate.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Puts disk usage policy in motd. Uses disk
+quotas. Allows no exceptions, thus crippling development work. 
+Locks accounts that go over quota.
+<h3>MANIAC:</h3>
+# cd /home
+        # rm -rf `du -s * | sort -rn | head -1 | awk '{print $2}'`;
+<h3>IDIOT:</h3>
+# cd /home
+        # cat `du -s * | sort -rn | head -1 | awk '{ printf "%s/*\n", $2}'` | compress
+<h3>SITUATION:</h3>
+Excessive CPU usage
+<h3>TECHNICAL THUG:</h3>
+Writes a suite of scripts to monitor processes, maintain
+a database of CPU usage, identify processes more than a standard 
+deviation over the norm, and renice offending
+processes. Places script in cron. Ends up renicing the production
+database into oblivion, bringing operations to a grinding halt, 
+much to the delight of the xtrek freaks.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Puts CPU usage policy in motd. Uses CPU quotas.
+Locks accounts that go over quota. Allows no exceptions, thus crippling
+development work, much to the delight of the xtrek freaks.
+<h3>MANIAC:</h3>
+# kill -9 `ps -augxww | sort -rn +8 -9  | head -1 | awk '{print $2}'`
+<h3>IDIOT:</h3>
+# compress -f `ps -augxww | sort -rn +8 -9  | head -1 | awk '{print $2}'`
+<h3>SITUATION:</h3>
+New account creation.
+<h3>TECHNICAL THUG:</h3>
+Writes perl script that creates home directory, copies
+in incomprehensible default environment, and places entries in 
+/etc/passwd, /etc/shadow, and /etc/group. (By hand,
+NOT with passmgmt.) Slaps on setuid bit; tells a nearby secretary to
+handle new accounts. Usually, said secretary is still dithering over 
+the difference between 'enter' and 'return'; and so, no new
+accounts are ever created.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Puts new account policy in motd. Since people
+without accounts cannot read the motd, nobody ever fulfills the 
+bureaucratic requirements; and so, no new accounts are ever created.
+<h3>MANIAC:</h3>
+"If you're too stupid to break in and create your own account, I
+don't want you on the system. We've got too many goddamn sh*t-for-brains 
+a**holes on this box anyway."
+<h3>IDIOT:</h3>
+# cd /home; mkdir "Bob's home directory"
+    # echo "Bob Simon:gandalf:0:0::/dev/tty:compress -f" &gt; /etc/passwd
+<h3>SITUATION:</h3>
+Root disk fails
+<h3>TECHNICAL THUG:</h3>
+Repairs drive. Usually is able to repair filesystem from
+boot monitor. Failing that, front-panel toggles microkernel in and 
+starts script on neighboring machine to load binary
+boot code into broken machine, reformat and reinstall OS. Lets it run
+over the weekend while he goes mountain climbing.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Begins investigation to determine who broke the
+drive. Refuses to fix system until culprit is identified and charged 
+for the equipment.
+<h3>MANIAC, LARGE SYSTEM:</h3>
+Rips drive from system, uses sledgehammer to smash
+same to flinders. Calls manufacturer, threatens pets. Abuses field 
+engineer while they put in a new drive and reinstall the OS.
+<h3>MANIAC, SMALL SYSTEM:</h3>
+Rips drive from system, uses ball-peen hammer to
+smash same to flinders. Calls Requisitions, threatens pets. Abuses 
+bystanders while putting in new drive and reinstalling OS.
+<h3>IDIOT:</h3>
+Doesn't notice anything wrong.
+<h3>SITUATION:</h3>
+Poor network response.
+<h3>TECHNICAL THUG:</h3>
+Writes scripts to monitor network, then rewires entire
+machine room, improving response time by 2%. Shrugs shoulders, says, 
+"I've done all I can do," and goes mountain climbing.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Puts network usage policy in motd. Calls up
+Berkeley and AT&amp;T, badgers whoever answers for network quotas. Tries 
+to get xtrek freaks fired.
+<h3>MANIAC:</h3>
+Every two hours, pulls ethernet cable from wall and waits for
+connections to time out.
+<h3>IDIOT:</h3>
+# compress -f /dev/en0
+<h3>SITUATION:</h3>
+User questions
+<h3>TECHNICAL THUG:</h3>
+Hacks the code of emacs' doctor-mode to answer new users
+questions.  Doesn't bother to tell people how to start the new 
+"guru-mode", or for that matter, emacs.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Puts user support policy in motd. Maintains
+queue of questions.  Answers them when he gets a chance, often 
+within two weeks of receipt of the proper form.
+<h3>MANIAC:</h3>
+Screams at users until they go away. Sometimes barters knowledge
+for powerful drink and/or sycophantic adulation.
+<h3>IDIOT:</h3>
+Answers all questions to best of his knowledge until the user
+realizes few Unix systems support punched cards or JCL.
+<h3>Stupid user questions</h3>
+<h3>TECHNICAL THUG:</h3>
+Answers question in hex, binary, postfix, and/or French
+until user gives up and goes away.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Locks user's account until user can present
+documentation demonstrating their qualification to use the machine.
+<h3>MANIAC:</h3>
+# cat &gt; &gt; ~luser/.cshrc
+    alias vi 'rm \!*;unalias vi;grep -v BoZo ~/.cshrc &gt; ~/.z; mv -f ~/.z ~/.cshrc'
+    ^D
+<h3>IDIOT:</h3>
+Answers all questions to best of his knowledge. Recruits user to
+system administration team.
+<h3>SITUATION:</h3>
+Process accounting management
+<h3>TECHNICAL THUG:</h3>
+Ignores packaged accounting software; trusts scripts to
+sniff out any problems &amp; compute charges.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Devotes 75% of disk space to accounting records
+owned by root and chmod'ed 000.
+<h3>MANIAC:</h3>
+Laughs fool head off at very mention of accounting.
+<h3>IDIOT:</h3>
+# lpr /etc/wtmp /usr/adm/paact
+<h3>SITUATION:</h3>
+Religious war, BSD vs. System V
+<h3>TECHNICAL THUG:</h3>
+BSD. Crippled on System V boxes.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+System V. Horrified by the people who use BSD.
+Places frequent calls to DEA.
+<h3>MANIAC:</h3>
+Prefers BSD, but doesn't care as long as HIS processes run
+quickly.
+<h3>IDIOT:</h3>
+# cd c:
+<h3>SITUATION:</h3>
+Religious war, System V vs. AIX
+<h3>TECHNICAL THUG:</h3>
+Weeps.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+AIX-- doesn't much care for the OS, but loves
+the jackboots.
+<h3>MANIAC:</h3>
+System V, but keeps AIX skills up, knowing full well how much
+Big Financial Institutions love IBM...
+<h3>IDIOT:</h3>
+AIX.
+<h3>SITUATION:</h3>
+Balky printer daemons.
+<h3>TECHNICAL THUG:</h3>
+Rewrites lpd in FORTH.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Puts printer use policy in motd. Calls customer
+support every time the printer freezes. Tries to get user who submitted 
+the most recent job fired.
+<h3>MANIAC:</h3>
+Writes script that kills all the daemons, clears all the print
+queues, and maybe restarts the daemons. Runs it once a hour from cron.
+<h3>IDIOT:</h3>
+# kill -9 /dev/lp ; /dev/lp &amp;
+<h3>SITUATION:</h3>
+OS upgrade
+<h3>TECHNICAL THUG:</h3>
+Reads source code of new release, takes only what he
+likes.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Instigates lawsuit against the vendor for having
+shipped a product with bugs in it in the first place.
+<h3>MANIAC:</h3>
+# uptime
+    1:33pm  up 19 days, 22:49,  167 users,  load average: 6.49, 6.45,
+6.31
+    # wall
+    Well, it's upgrade time.  Should take a few hours.  And good luck on
+that 5:00 deadline, guys!  We're all pulling for you!
+    ^D
+<h3>IDIOT:</h3>
+# dd if=/dev/rmt8 of=/vmunix
+<h3>SITUATION:</h3>
+Balky mail
+<h3>TECHNICAL THUG:</h3>
+Rewrites sendmail.cf from scratch. Rewrites sendmail in
+SNOBOL. Hacks kernel to implement file locking. Hacks kernel to 
+implement "better" semaphores. Rewrites sendmail in assembly. Hacks 
+kernel to . . .
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Puts mail use policy in motd. Locks accounts
+that go over mail use quota. Keeps quota low enough that people go 
+back to interoffice mail, thus solving problem.
+<h3>MANIAC:</h3>
+# kill -9 `ps -augxww | grep sendmail | awk '{print $2}'`
+    # rm -f /usr/spool/mail/*
+    # wall
+    Mail is down.  Please use interoffice mail until we have it back up.
+
+    ^D
+    # write max
+    I've got my boots and backpack.  Ready to leave for Mount Tam?
+    ^D
+<h3>IDIOT:</h3>
+# echo "HELP!" | mail
+tech_support.AT.vendor.com%kremvax%bitnet!BIFF!!!
+<h3>SITUATION:</h3>
+Users want phone list application
+<h3>TECHNICAL THUG:</h3>
+Writes RDBMS in perl and Smalltalk. Users give up and go
+back to post-it notes.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Oracle. Users give up and go back to post-it
+notes.
+<h3>MANIAC:</h3>
+Tells the users to use flat files and grep, the way God meant
+man to keep track of phone numbers. Users give up and go back to 
+post-it notes.
+<h3>IDIOT:</h3>
+% dd ibs=80 if=/dev/rdisk001s7 | grep "Fred"
+<h3>OTHER GUIDELINES</h3>
+<h3>TYPICAL ROOT</h3>
+.cshrc FILE:
+<h3>TECHNICAL THUG:</h3>
+Longer than eight kilobytes. Sources the output of a
+perl script, rewrites itself.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Typical lines include:
+
+    umask 777
+    alias cd 'cd \!*; rm -rf ching *hack mille omega rogue xtrek &gt; /dev/null &amp;'
+<h3>MANIAC:</h3>
+Typical lines include:
+
+    alias rm 'rm -rf \!*'
+    alias hose kill -9 '`ps -augxww | grep \!* | awk \'{print $2}\'`'
+    alias kill 'kill -9 \!* ; kill -9 \!* ; kill -9 \!*'
+    alias renice 'echo Renice\?  You must mean kill -9.; kill -9 \!*'
+<h3>IDIOT:</h3>
+Typical lines include:
+
+    alias dir ls
+    alias era rm
+    alias kitty cat
+    alias process_table ps
+    setenv DISPLAY vt100
+<h3>HOBBIES, TECHNICAL:</h3>
+<h3>TECHNICAL THUG:</h3>
+Writes entries for Obsfuscated C contest. Optimizes
+INTERCAL scripts.  Maintains ENIAC emulator. Virtual reality .
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Bugs office. Audits card-key logs. Modifies old
+TVs to listen in on cellular phone conversations. Listens to police band.
+<h3>MANIAC:</h3>
+Volunteers at Survival Research Labs. Bugs office. Edits
+card-key logs. Modifies old TVs to listen in on cellular phone 
+conversations. Jams police band.
+<h3>IDIOT:</h3>
+Ties shoes. Maintains COBOL decimal to roman numeral converter.
+Rereads flowcharts from his salad days at Rand.
+<h3>HOBBIES, NONTECHNICAL:</h3>
+<h3>TECHNICAL THUG:</h3>
+Drinks "Smart Drinks." Attends raves. Hangs out at
+poetry readings and Whole Earth Review events and tries to pick up 
+Birkenstock MOTAS.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Reads Readers Digest and Mein Kampf. Sometimes
+turns up car radio and sings along to John Denver. Golfs. Drinks gin 
+martinis. Hangs out in yuppie bars and tries to pick up dominatrixes.
+<h3>MANIAC:</h3>
+Reads Utne Reader and Mein Kampf. Faithfully attends Dickies and
+Ramones concerts.  Punches out people who say "virtual reality." Drinks 
+damn near anything, but favors Wild Turkey, Black Bush, and grain alcohol.
+Hangs out in neighborhood bars and tries to pick up MOTAS by drinking 
+longshoremen under the table .
+<h3>IDIOT:</h3>
+Reads Time and Newsweek -- and *believes* them. Drinks
+Jagermeister. Tries to pick up close blood relations-- often succeeds, 
+producting next generation of idiots.
+<h3>1992 PRESIDENTIAL ELECTION:</h3>
+<h3>TECHNICAL THUG:</h3>
+Clinton, but only because he liked Gore's book.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Bush. Possibly Clinton, but only because he
+liked Tipper.
+<h3>MANIAC:</h3>
+Frank Zappa.
+<h3>IDIOT:</h3>
+Perot.
+<h3>1996 PRESIDENTIAL ELECTION:</h3>
+<h3>TECHNICAL THUG:</h3>
+Richard Stallman - Larry Wall.
+<h3>ADMINISTRATIVE FASCIST:</h3>
+Nixon - Buchanan.
+<h3>MANIAC:</h3>
+Frank Zappa.
+<h3>IDIOT:</h3>
+Quayle.
+<h3>COMPOUND SYSTEM ADMINISTRATORS:</h3>
+<h3>TECHNICAL FASCIST:</h3>
+Hacks kernel &amp; writes a horde of scripts to prevent
+folk from ever using more than their fair share of system resources. 
+Resulting overhead and load brings system to its knees.
+<h3>TECHNICAL MANIAC:</h3>
+Writes scripts that SEEM to be monitoring the system,
+but are actually encrypting large lists of passwords. Uses nearby nodes 
+as beta test sites for worms.
+<h3>TECHNICAL IDIOT:</h3>
+Writes superuser-run scripts that sooner or later do an
+"rm -rf /".
+<h3>FASCISTIC MANIAC:</h3>
+At first hint of cracker incursions, whether real or
+imagined, shuts down system by triggering water-on-the-brain detectors 
+and Halon system.
+<h3>FASCISTIC IDIOT:</h3>
+# cp /dev/null /etc/passwd
+<h3>MANIACAL IDIOT:</h3>
+Napalms the CPU.
+
+Stephan Zielinski
+
+--
+Submitted by
+<h3>Durval Menezes</h3>
+.
+<p>
+<a href="https://www.gnu.org/fun/humor.html">Other humor</a>
+in the GNU Humor Collection.</p>
+<div class="infobox">
+<h4 id="Disclaimer">Disclaimer</h4>
+<p>The joke on this page was
+obtained from the FSF's <a href="https://lists.gnu.org/">email
+archives</a> of the GNU Project.</p>
+<p>The Free Software Foundation claims no copyright on this joke.</p>
+</div>
+</div>
+
+        </div>
+      </content>
+      
+      
+      
+
+      <author>
+        <name>Steven Acres</name>
+      </author>
+
+      <published>2008-12-17T11:25:47-05:00</published>
+
+      <updated>2008-12-17T11:42:13-05:00</updated>
+
+
+    </entry>
+
+  
+  
+
+    <entry>
+
+      <title>Acer 5102 Linux Webcam</title>
+
+      <link rel="alternate" type="text/html"
+            href="https://blog.swatteksystems.com/-1/archive/2008/09/25/acer-5102-linux-webcam" />
+
+      
+
+      <id>urn:syndication:aeb6d223431720d58c1fe29c683b5a14</id>
+      
+      
+      
+
+      
+      <content type="xhtml"
+               xml:base="https://blog.swatteksystems.com"
+               xml:lang="en-US" xml:space="preserve">
+        <div xmlns="https://www.w3.org/1999/xhtml">
+          
+<p>There IS a driver in development which provides _some_ functionality and performs with AMSN. Following is a brief how-to.</p>
+<pre>lsusb | grep 0402:5602 (should provide output like so: Bus 003 Device 002: ID 0402:5602 ALi Corp. Video Camera Controller
+)
+
+You will now create/pull the svn repo now:
+
+svn co httpss://m560x-driver.svn.sourceforge.net/svnroot/m560x-driver m560x-driver ; cd m560x-driver/m560x/branches/m5602 ;
+make ; sudo make install ; modprobe m5602
+
+Now proceed with the AMSN video/audio configuration assistant, reduce the brightness setting to alleviate the jumpiness and you're done!
+
+
+<img class="image-inline image-inline" src="topic_images/webcam2.png/image_preview" alt="Acer Webcam Photo" />
+
+Taken with the Acer 5102 m5602 linux driver webcam</pre>
+
+        </div>
+      </content>
+      
+      
+      
+
+      <author>
+        <name>admin, Steven Acres</name>
+      </author>
+
+      <published>2008-09-25T13:55:00-04:00</published>
+
+      <updated>2008-12-15T02:13:43-05:00</updated>
+
+      
+        <category term="webcam" />
+      
+      
+        <category term="acer5102" />
+      
+      
+        <category term="howto" />
+      
+      
+        <category term="linux" />
+      
+      
+        <category term="guide" />
+      
+
+    </entry>
+
+  
+
+</feed>
