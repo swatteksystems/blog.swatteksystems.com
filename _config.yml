@@ -24,7 +24,7 @@ url: "https://blog.swatteksystems.com" # the base hostname & protocol for your s
 # on landing page
 # - set the greeting only if you want to display the first green section
 greeting:
-  title: Welcome!
+  title: Welcome! We're currently refactoring, actual bits(bytes) coming soon...
   text: Poke it with a big stick
 # - title for your blog's featured posts
 features-title: Featured topics
@@ -99,7 +99,7 @@ markdown: kramdown
 #sass:
 #  style: compressed
 exclude: ['site.bat','compose.rb','README.md']
-include: ['_pages','_old']
+include: ['_pages']
 defaults:
   - scope:
       path: _pages
@@ -115,9 +115,9 @@ defaults:
     values:
       layout: post
   - scope:
-      path: _old
+      path: oldenblog
     values:
-      layout: posts
+      layout: page
 # to initialize arrays in assignments (assign myarr = site.empty_array)
 # (easier to grok than assign myarr = '' | split',')
 empty_array: []
