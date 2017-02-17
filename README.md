@@ -1,4 +1,4 @@
-## From: arkadianriver.com
+## Forked From: arkadianriver.com
 
 My personal web site, based off the http://html5up.net/spectral design by
 [@ajlkn](http://twitter.com/ajlkn).
@@ -25,7 +25,7 @@ This repo is the same code I use for my site, excluding my posts.
       author entry in the file.
 
    d. Provide your own images.
-   
+
    e. Continue tweaking to your heart's desire, or not.
 
 0. Create your posts:
@@ -34,15 +34,3 @@ This repo is the same code I use for my site, excluding my posts.
       the `--future` option is used.
 
    b. You can run `ruby compose.rb` to create new draft posts.
-
-0. Test and publish your site:
-
-   If you're building your site on Windows (like me) and you use WinSCP to sync with your
-   remote site, you can use the `site.bat` file. Set up a `_site.env` file
-   as described in the comments of `site.bat` and change the excludes list for your site.
-
-   `site dev` runs `jekyll serve --future --drafts` in development mode.  
-   `site devnof` runs `jekyll serve --drafts` in development mode.  
-   `site preview` runs `jekyll serve` in production mode.  
-   `site prod` simply builds with `jekyll build` in production mode (no serve).  
-   `site publish` uses WinSCP's `synchronize` feature to mirror to a remote site.
