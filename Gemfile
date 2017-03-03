@@ -3,3 +3,4 @@ gem 'jekyll', '>= 3.1.2'
 gem 'github-pages', group: :jekyll_plugins
 gem 'jekyll-mentions', group: :jekyll_plugins
 gem 'jekyll-redirect-from', group: :jekyll_plugins
+gem 'jekyll-compose', group: :jekyll_plugins
