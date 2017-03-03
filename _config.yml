@@ -93,6 +93,9 @@ works_in_progress: yes
 # set this to yes
 custom_extensions: no
 
+# Timezone
+timezone: America/New_York
+
 # Add GH @mentions
 gems:
   - jekyll-mentions
