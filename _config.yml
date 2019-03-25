@@ -97,7 +97,7 @@ custom_extensions: no
 timezone: America/New_York
 
 # Add GH @mentions
-gems:
+plugins:
   - jekyll-mentions
   - jekyll-redirect-from
 
